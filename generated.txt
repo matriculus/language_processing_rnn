@@ -1,0 +1,18 @@
+Language Processing! v01
+Loading libraries...
+Reading Book...
+Found 2718 unique words tokens.
+Intented vocabulary size of 3000
+
+ Example sentence: SENTENCE_START One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. SENTENCE_END
+
+ Example sentence after processing: ['SENTENCE_START', 'One', 'morning', ',', 'when', 'Gregor', 'Samsa', 'woke', 'from', 'troubled', 'dreams', ',', 'he', 'found', 'himself', 'transformed', 'in', 'his', 'bed', 'into', 'a', 'horrible', 'vermin', '.', 'SENTENCE_END']
+2018-03-11 13:02:00: Loss after number of samples seen = 0, epoch = 1: 7.907617
+2018-03-11 13:02:16: Loss after number of samples seen = 50, epoch = 2: 225.232014
+Setting learning rate to 0.025000
+2018-03-11 13:02:32: Loss after number of samples seen = 100, epoch = 3: 68.949063
+2018-03-11 13:02:49: Loss after number of samples seen = 150, epoch = 4: 51.530563
+2018-03-11 13:03:04: Loss after number of samples seen = 200, epoch = 5: 73.594481
+Setting learning rate to 0.012500
+2018-03-11 13:03:21: Loss after number of samples seen = 250, epoch = 6: 7.547481
+2018-03-11 13:03:38: Loss after number of samples seen = 300, epoch = 7: 7.482700

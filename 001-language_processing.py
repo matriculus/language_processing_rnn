@@ -7,7 +7,7 @@ import operator
 from datetime import datetime
 import sys
 
-intented_vocabulary_size = 3000
+intented_vocabulary_size = 000
 unknown_token = "UNKNOWN_TOKEN"
 sentence_start_token = "SENTENCE_START"
 sentence_end_token = "SENTENCE_END"

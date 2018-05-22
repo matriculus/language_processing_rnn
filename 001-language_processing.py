@@ -7,7 +7,7 @@ import operator
 from datetime import datetime
 import sys
 
-intented_vocabulary_size = 000
+intented_vocabulary_size = 2000
 unknown_token = "UNKNOWN_TOKEN"
 sentence_start_token = "SENTENCE_START"
 sentence_end_token = "SENTENCE_END"
@@ -151,7 +151,7 @@ class RNN:
 		self.V -= learning_rate*dLdV
 		self.W -= learning_rate*dLdW
 
-	def train_with_sgd(self, x, y, learning_rate=0.05, nepoch=1000, evaluate_loss_after=5):
+	def train_with_sgd(self, x, y, learning_rate=0.1, nepoch=1000, evaluate_loss_after=5):
 		losses = []
 		num_examples_seen = 0
 		for epoch in range(nepoch):
@@ -196,6 +196,6 @@ vocabulary_size = min(intented_vocabulary_size, len(index_to_word))
 
 np.random.seed(0)
 model = RNN(vocabulary_size)
-losses = model.train_with_sgd(X_train[:300], Y_train[:300], nepoch=50, evaluate_loss_after=10)
+losses = model.train_with_sgd(X_train, Y_train, nepoch=50, evaluate_loss_after=10)
 
 model.generate_sentence()

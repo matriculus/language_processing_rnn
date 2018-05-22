@@ -194,7 +194,7 @@ class RNN:
 
 vocabulary_size = min(intented_vocabulary_size, len(index_to_word))
 
-np.random.seed(10)
+np.random.seed(0)
 model = RNN(vocabulary_size)
 losses = model.train_with_sgd(X_train[:100], Y_train[:100], nepoch=50, evaluate_loss_after=10)
 

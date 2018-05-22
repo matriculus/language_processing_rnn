@@ -7,7 +7,7 @@ import operator
 from datetime import datetime
 import sys
 
-intented_vocabulary_size = 2000
+intented_vocabulary_size = 3000
 unknown_token = "UNKNOWN_TOKEN"
 sentence_start_token = "SENTENCE_START"
 sentence_end_token = "SENTENCE_END"
@@ -184,7 +184,7 @@ class RNN:
 		sentence_str = [index_to_word[x] for x in new_sentence[1:-1]]
 		return sentence_str
 
-	def generate_sentence(self, num_sentences=1, sentence_min_length=7):	
+	def generate_sentence(self, num_sentences=3, sentence_min_length=7):	
 		for i in range(num_sentences):
 			sent = []
 			while len(sent) < sentence_min_length:
@@ -196,6 +196,6 @@ vocabulary_size = min(intented_vocabulary_size, len(index_to_word))
 
 np.random.seed(0)
 model = RNN(vocabulary_size)
-losses = model.train_with_sgd(X_train[:100], Y_train[:100], nepoch=50, evaluate_loss_after=10)
+losses = model.train_with_sgd(X_train[:300], Y_train[:300], nepoch=50, evaluate_loss_after=10)
 
 model.generate_sentence()

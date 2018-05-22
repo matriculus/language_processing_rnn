@@ -7,7 +7,7 @@ import operator
 from datetime import datetime
 import sys
 
-intented_vocabulary_size = 3000
+intented_vocabulary_size = 2000
 unknown_token = "UNKNOWN_TOKEN"
 sentence_start_token = "SENTENCE_START"
 sentence_end_token = "SENTENCE_END"
@@ -18,6 +18,7 @@ data = open('kafka.txt', 'r').read()
 sentences = [sent + "." for sent in data.split(". ")]
 sentences = ["%s %s %s" % (sentence_start_token, x, sentence_end_token) for x in sentences]
 
+# print(sentences[1])
 tokenized_sentences = [nltk.word_tokenize(sent) for sent in sentences]
 
 word_freq = nltk.FreqDist(itertools.chain(*tokenized_sentences))
@@ -58,9 +59,7 @@ class RNN:
 	def forward_propagation(self, x):
 		# The total number of time steps
 		T = len(x)
-		'''
-		During forward porpagation, we save all the hidden states in s since we need them
-		'''
+		#During forward porpagation, we save all the hidden states in s since we need them
 		s = np.zeros((T+1, self.hidden_dim)) # additional element is to set 0
 		s[-1] = np.zeros(self.hidden_dim)
 		# outputs are also saved for each time
@@ -166,9 +165,6 @@ class RNN:
 				if (len(losses) > 1 and losses[-1][1] > losses[-2][1]):
 					learning_rate = learning_rate * 0.5
 					print("Setting learning rate to %f" % learning_rate)
-				# elif (len(losses) > 1 and losses[-1][1] < losses[-2][1])*50:
-				# 	learning_rate = learning_rate * 1.1
-				# 	print("Setting learning rate to %f" % learning_rate)
 				sys.stdout.flush()
 			# for each training example
 			for i in range(len(y)):
@@ -200,6 +196,6 @@ vocabulary_size = min(intented_vocabulary_size, len(index_to_word))
 
 np.random.seed(10)
 model = RNN(vocabulary_size)
-losses = model.train_with_sgd(X_train[:50], Y_train[:50], nepoch=50, evaluate_loss_after=1)
+losses = model.train_with_sgd(X_train[:100], Y_train[:100], nepoch=50, evaluate_loss_after=10)
 
 model.generate_sentence()
